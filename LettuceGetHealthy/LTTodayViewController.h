@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  LTTodayViewController.m.h
 //  LettuceGetHealthy
 //
 //  Created by Kimberly Hsiao on 8/29/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface LTTodayViewController : UIViewController
 
 
 @end
