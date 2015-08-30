@@ -21,6 +21,7 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
 @property (weak, nonatomic) IBOutlet UIButton *oneSaladButton;
 @property (weak, nonatomic) IBOutlet UIButton *twoSaladButton;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
+
 @end
 
 @implementation LTTodayViewController
@@ -134,6 +135,10 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
     [self unselectButton:self.zeroSaladsButton];
     [self unselectButton:self.oneSaladButton];
     [self saveSaladCount:2];
+}
+
+- (IBAction)doneTapped:(id)sender {
+    
 }
 
 #pragma mark - user defaults
