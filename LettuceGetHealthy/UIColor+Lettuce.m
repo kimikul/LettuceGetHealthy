@@ -15,7 +15,7 @@
 }
 
 + (UIColor*)darkGreen {
-    return [UIColor colorWithRed:38.0/255 green:93.0/255 blue:53.0/255 alpha:1.0];
+    return [UIColor colorWithRed:73.0/255 green:178.0/255 blue:102.0/255 alpha:1.0];
 }
 
 @end

@@ -15,5 +15,6 @@
 #import "UIStoryboard+Lettuce.h"
 #import "LTConstants.h"
 #import <Parse/Parse.h>
+#import "UIView+Lettuce.h"
 
 #endif

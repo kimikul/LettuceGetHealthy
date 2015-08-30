@@ -1,5 +1,5 @@
 //
-//  LTConstants.h
+//  LTHelper.h
 //  LettuceGetHealthy
 //
 //  Created by Kimberly Hsiao on 8/30/15.
@@ -8,5 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const LTCurrentUserDefaultsKey;
-extern NSString *const LTHasSubmittedTodayDefaultsKey;
+@interface LTHelper : NSObject
+
++ (PFObject*)currentUser;
+
+@end

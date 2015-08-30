@@ -62,7 +62,7 @@
     UINavigationController *homeVC = [mainStoryboard instantiateViewControllerWithIdentifier:@"LTTabBarController"];
     
     LTAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    appDelegate.window.rootViewController = homeVC;
+    [appDelegate setRootViewController:homeVC];
 }
 
 @end

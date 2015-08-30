@@ -7,8 +7,7 @@
 //
 
 #import "LTTodayViewController.h"
-#import "UIColor+Lettuce.h"
-#import <Parse/Parse.h>
+#import "LTHelper.h"
 
 static NSString *LTDidWorkoutDefaultsKey = @"LTDidWorkoutDefaultsKey";
 static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
@@ -21,6 +20,16 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
 @property (weak, nonatomic) IBOutlet UIButton *oneSaladButton;
 @property (weak, nonatomic) IBOutlet UIButton *twoSaladButton;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
+@property (weak, nonatomic) IBOutlet UIView *allDoneView;
+@property (weak, nonatomic) IBOutlet UILabel *allDoneWorkoutsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *allDoneSaladsLabel;
+@property (weak, nonatomic) IBOutlet UIView *allDoneHeaderView;
+@property (weak, nonatomic) IBOutlet UIView *allDoneWorkoutsView;
+@property (weak, nonatomic) IBOutlet UIView *allDoneSaladsView;
+@property (weak, nonatomic) IBOutlet UIImageView *dumbellIcon;
+@property (weak, nonatomic) IBOutlet UIImageView *saladBowlIcon;
+@property (weak, nonatomic) IBOutlet UIView *dumbbellCircleView;
+@property (weak, nonatomic) IBOutlet UIView *saladCircleView;
 
 @end
 
@@ -30,22 +39,55 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
     [super viewDidLoad];
     
     [self setupButtons];
+    [self setupAllDoneView];
     [self setupTitle];
-    [self setupSavedValues];
+    [self processSavedValues];
 }
 
 - (void)setupButtons {
-    [self setupButton:self.yesWorkoutButton];
-    [self setupButton:self.noWorkoutButton];
-    [self setupButton:self.zeroSaladsButton];
-    [self setupButton:self.oneSaladButton];
-    [self setupButton:self.twoSaladButton];
-    [self setupButton:self.doneButton];
+    [self addRoundedCornersToView:self.yesWorkoutButton];
+    [self addRoundedCornersToView:self.noWorkoutButton];
+    [self addRoundedCornersToView:self.zeroSaladsButton];
+    [self addRoundedCornersToView:self.oneSaladButton];
+    [self addRoundedCornersToView:self.twoSaladButton];
+    [self addRoundedCornersToView:self.doneButton];
 }
 
-- (void)setupSavedValues {
+- (void)setupAllDoneView {
+    [self addRoundedCornersToView:self.allDoneHeaderView];
+    [self addRoundedCornersToView:self.allDoneWorkoutsView];
+    [self addRoundedCornersToView:self.allDoneSaladsView];
+    
+    UIImage *saladBowlIcon = [UIImage imageNamed:@"icon-salad"];
+    [saladBowlIcon imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.saladBowlIcon.tintColor = [UIColor lettuceGreen];
+    [self.saladBowlIcon setImage:saladBowlIcon];
+    
+    UIImage *dumbbellIcon = [UIImage imageNamed:@"icon-workout"];
+    [dumbbellIcon imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    self.dumbellIcon.tintColor = [UIColor orangeColor];
+    [self.dumbellIcon setImage:dumbbellIcon];
+    
+    self.dumbbellCircleView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.dumbbellCircleView.layer.borderWidth = 2.0;
+    self.dumbbellCircleView.backgroundColor = [UIColor darkGrayColor];
+    self.saladCircleView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.saladCircleView.layer.borderWidth = 2.0;
+    self.saladCircleView.backgroundColor = [UIColor darkGrayColor];
+}
+
+- (void)processSavedValues {
+    NSNumber *hasSubmittedToday = [self savedSubmittedSetting];
+    if ([hasSubmittedToday isEqualToNumber:@(1)]) {
+        [self showAllDoneForTodayViewWorkoutCount:[self savedWorkoutCount] saladCount:[self savedSaladCount]];
+    } else {
+        [self showSavedCounts];
+    }
+}
+
+- (void)showSavedCounts {
     NSNumber *savedSaladCount = [self savedSaladCount];
-    NSNumber *savedWorkout = [self savedWorkout];
+    NSNumber *savedWorkout = [self savedWorkoutCount];
     
     if (savedSaladCount) {
         NSInteger count = savedSaladCount.integerValue;
@@ -85,9 +127,9 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
 
 #pragma mark - button helpers
 
-- (void)setupButton:(UIButton*)button {
-    button.layer.cornerRadius = 4.0;
-    button.layer.masksToBounds = NO;
+- (void)addRoundedCornersToView:(UIView*)view {
+    view.layer.cornerRadius = 4.0;
+    view.layer.masksToBounds = NO;
 }
 
 - (void)selectButton:(UIButton*)button {
@@ -107,13 +149,13 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
 - (IBAction)yupWorkoutButtonTapped:(id)sender {
     [self selectButton:self.yesWorkoutButton];
     [self unselectButton:self.noWorkoutButton];
-    [self saveWorkout:YES];
+    [self saveWorkout:@(1)];
 }
 
 - (IBAction)nopeWorkoutButtonTapped:(id)sender {
     [self selectButton:self.noWorkoutButton];
     [self unselectButton:self.yesWorkoutButton];
-    [self saveWorkout:NO];
+    [self saveWorkout:@(0)];
 }
 
 - (IBAction)zeroSaladsButtonTapped:(id)sender {
@@ -138,10 +180,45 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
 }
 
 - (IBAction)doneTapped:(id)sender {
+    NSDate *today = [NSDate date];
+    PFObject *currentUser = [LTHelper currentUser];
     
+    PFObject *dayLog = [PFObject objectWithClassName:@"DayLog"];
+    dayLog[@"saladCount"] = [self savedSaladCount] ?: @(0);
+    dayLog[@"workoutCount"] = [self savedWorkoutCount] ?: @(0);
+    dayLog[@"date"] = today;
+    dayLog[@"user"] = currentUser;
+    
+    [dayLog saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            [self saveSubmittedSetting];
+            [self showAllDoneForTodayViewWorkoutCount:dayLog[@"workoutCount"] saladCount:dayLog[@"saladCount"]];
+        } else {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error saving your entry. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+        }
+    }];
+}
+
+#pragma mark - view
+
+- (void)showAllDoneForTodayViewWorkoutCount:(NSNumber*)workoutCount saladCount:(NSNumber*)saladCount {
+    NSString *workoutModifier = workoutCount.integerValue != 1 ? @"S" : @"";
+    NSString *saladsModifier = saladCount.integerValue != 1 ? @"S" : @"";
+    
+    self.allDoneWorkoutsLabel.text = [NSString stringWithFormat:@"%@ WORKOUT%@",workoutCount,workoutModifier];
+    self.allDoneSaladsLabel.text = [NSString stringWithFormat:@"%@ SALAD%@",saladCount,saladsModifier];
+
+    [self.allDoneView fadeInWithDuration:0.3 completion:nil];
 }
 
 #pragma mark - user defaults
+
+- (NSNumber*)savedSubmittedSetting {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *hasSubmitted = [defaults objectForKey:LTHasSubmittedTodayDefaultsKey];
+    return hasSubmitted;
+}
 
 - (NSNumber*)savedSaladCount {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -149,10 +226,16 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
     return count;
 }
 
-- (NSNumber*)savedWorkout {
+- (NSNumber*)savedWorkoutCount {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSNumber *didWorkout = [defaults objectForKey:LTDidWorkoutDefaultsKey];
     return didWorkout;
+}
+
+- (void)saveSubmittedSetting {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:@(1) forKey:LTHasSubmittedTodayDefaultsKey];
+    [defaults synchronize];
 }
 
 - (void)saveSaladCount:(NSInteger)count {
@@ -161,9 +244,9 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
     [defaults synchronize];
 }
 
-- (void)saveWorkout:(BOOL)didWorkout {
+- (void)saveWorkout:(NSNumber*)didWorkout {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:@(didWorkout) forKey:LTDidWorkoutDefaultsKey];
+    [defaults setObject:didWorkout forKey:LTDidWorkoutDefaultsKey];
     [defaults synchronize];
 }
 
