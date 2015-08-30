@@ -79,7 +79,7 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
 - (void)processSavedValues {
     NSNumber *hasSubmittedToday = [self savedSubmittedSetting];
     if ([hasSubmittedToday isEqualToNumber:@(1)]) {
-        [self showAllDoneForTodayViewWorkoutCount:[self savedWorkoutCount] saladCount:[self savedSaladCount]];
+        [self showAllDoneForTodayViewWorkoutCount:[self savedWorkoutCount] saladCount:[self savedSaladCount] animation:NO];
     } else {
         [self showSavedCounts];
     }
@@ -192,7 +192,7 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
     [dayLog saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             [self saveSubmittedSetting];
-            [self showAllDoneForTodayViewWorkoutCount:dayLog[@"workoutCount"] saladCount:dayLog[@"saladCount"]];
+            [self showAllDoneForTodayViewWorkoutCount:dayLog[@"workoutCount"] saladCount:dayLog[@"saladCount"] animation:YES];
         } else {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error saving your entry. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alertView show];
@@ -202,14 +202,15 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
 
 #pragma mark - view
 
-- (void)showAllDoneForTodayViewWorkoutCount:(NSNumber*)workoutCount saladCount:(NSNumber*)saladCount {
+- (void)showAllDoneForTodayViewWorkoutCount:(NSNumber*)workoutCount saladCount:(NSNumber*)saladCount animation:(BOOL)animate {
     NSString *workoutModifier = workoutCount.integerValue != 1 ? @"S" : @"";
     NSString *saladsModifier = saladCount.integerValue != 1 ? @"S" : @"";
     
     self.allDoneWorkoutsLabel.text = [NSString stringWithFormat:@"%@ WORKOUT%@",workoutCount,workoutModifier];
     self.allDoneSaladsLabel.text = [NSString stringWithFormat:@"%@ SALAD%@",saladCount,saladsModifier];
 
-    [self.allDoneView fadeInWithDuration:0.3 completion:nil];
+    double duration = animate ? 0.3 : 0.0;
+    [self.allDoneView fadeInWithDuration:duration completion:nil];
 }
 
 #pragma mark - user defaults
