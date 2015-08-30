@@ -30,7 +30,7 @@
                                 <rect key="frame" x="15" y="106" width="570" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="TgN-On-GKi">
-                                        <rect key="frame" x="286" y="0.0" width="284" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="284" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="nope :(">
@@ -41,7 +41,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gSP-dr-bsf">
-                                        <rect key="frame" x="0.0" y="0.0" width="284" height="50"/>
+                                        <rect key="frame" x="286" y="0.0" width="284" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="0aO-XJ-jsm"/>
@@ -63,15 +63,25 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.92418981479999995" green="0.92418981479999995" blue="0.92418981479999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="gSP-dr-bsf" secondAttribute="trailing" id="9yZ-cy-73B"/>
                                     <constraint firstItem="gSP-dr-bsf" firstAttribute="height" secondItem="TgN-On-GKi" secondAttribute="height" id="A1h-ox-4qb"/>
+                                    <constraint firstItem="gSP-dr-bsf" firstAttribute="leading" secondItem="TgN-On-GKi" secondAttribute="trailing" constant="2" id="Fqb-TO-EFm"/>
                                     <constraint firstAttribute="height" constant="50" id="OeB-5T-1kG"/>
-                                    <constraint firstItem="TgN-On-GKi" firstAttribute="leading" secondItem="gSP-dr-bsf" secondAttribute="trailing" constant="2" id="VTO-6J-W9r"/>
-                                    <constraint firstItem="gSP-dr-bsf" firstAttribute="leading" secondItem="IIS-yw-fAI" secondAttribute="leading" id="XFJ-iE-4g0"/>
+                                    <constraint firstItem="TgN-On-GKi" firstAttribute="leading" secondItem="IIS-yw-fAI" secondAttribute="leading" id="Qpx-t7-oGj"/>
+                                    <constraint firstItem="TgN-On-GKi" firstAttribute="leading" secondItem="gSP-dr-bsf" secondAttribute="trailing" constant="-570" id="VTO-6J-W9r"/>
+                                    <constraint firstItem="gSP-dr-bsf" firstAttribute="leading" secondItem="IIS-yw-fAI" secondAttribute="leading" constant="286" id="XFJ-iE-4g0"/>
                                     <constraint firstItem="gSP-dr-bsf" firstAttribute="top" secondItem="IIS-yw-fAI" secondAttribute="top" id="fQl-Tm-Kgr"/>
                                     <constraint firstItem="gSP-dr-bsf" firstAttribute="width" secondItem="TgN-On-GKi" secondAttribute="width" id="i0T-qF-BBw"/>
                                     <constraint firstItem="TgN-On-GKi" firstAttribute="top" secondItem="IIS-yw-fAI" secondAttribute="top" id="tHl-Ya-7Y2"/>
-                                    <constraint firstAttribute="trailing" secondItem="TgN-On-GKi" secondAttribute="trailing" id="waP-dB-Gdl"/>
+                                    <constraint firstAttribute="trailing" secondItem="TgN-On-GKi" secondAttribute="trailing" constant="286" id="waP-dB-Gdl"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VTO-6J-W9r"/>
+                                        <exclude reference="waP-dB-Gdl"/>
+                                        <exclude reference="XFJ-iE-4g0"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="21" text="HOW MANY SALADS DID YOU EAT?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPR-jh-oQg">
                                 <rect key="frame" x="16" y="187" width="570" height="21"/>
@@ -203,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="824"/>
+            <point key="canvasLocation" x="1212" y="905"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BxA-Yr-jDi">
