@@ -20,6 +20,11 @@
 		5E530F5F1B9377E3009A0843 /* LTSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F5E1B9377E3009A0843 /* LTSignUpViewController.m */; };
 		5E530F6C1B937E4F009A0843 /* UIStoryboard+Lettuce.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F6B1B937E4F009A0843 /* UIStoryboard+Lettuce.m */; };
 		5E530F701B938568009A0843 /* LTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F6F1B938568009A0843 /* LTConstants.m */; };
+		5E9978241B93BA4D00392FFA /* LTThisWeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9978231B93BA4D00392FFA /* LTThisWeekViewController.m */; };
+		5E9978271B93C2B200392FFA /* LTProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9978261B93C2B200392FFA /* LTProgressView.m */; };
+		5E9978291B93C2BC00392FFA /* LTProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E9978281B93C2BC00392FFA /* LTProgressView.xib */; };
+		5E99782C1B93C5E300392FFA /* NSDate+Lettuce.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E99782B1B93C5E300392FFA /* NSDate+Lettuce.m */; };
+		5E99782F1B93CBBD00392FFA /* LTAggregatedUserDayLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E99782E1B93CBBD00392FFA /* LTAggregatedUserDayLog.m */; };
 		5EE114AA1B9392C000FB8CE1 /* LTHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE114A91B9392C000FB8CE1 /* LTHelper.m */; };
 		5EE114AD1B93962400FB8CE1 /* UIView+Lettuce.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE114AC1B93962400FB8CE1 /* UIView+Lettuce.m */; };
 /* End PBXBuildFile section */
@@ -61,6 +66,15 @@
 		5E530F6E1B938568009A0843 /* LTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTConstants.h; sourceTree = "<group>"; };
 		5E530F6F1B938568009A0843 /* LTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTConstants.m; sourceTree = "<group>"; };
 		5E530F721B938736009A0843 /* Lettuce-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lettuce-Prefix.pch"; sourceTree = "<group>"; };
+		5E9978221B93BA4D00392FFA /* LTThisWeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTThisWeekViewController.h; sourceTree = "<group>"; };
+		5E9978231B93BA4D00392FFA /* LTThisWeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTThisWeekViewController.m; sourceTree = "<group>"; };
+		5E9978251B93C2B200392FFA /* LTProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTProgressView.h; sourceTree = "<group>"; };
+		5E9978261B93C2B200392FFA /* LTProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTProgressView.m; sourceTree = "<group>"; };
+		5E9978281B93C2BC00392FFA /* LTProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LTProgressView.xib; sourceTree = "<group>"; };
+		5E99782A1B93C5E300392FFA /* NSDate+Lettuce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Lettuce.h"; sourceTree = "<group>"; };
+		5E99782B1B93C5E300392FFA /* NSDate+Lettuce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Lettuce.m"; sourceTree = "<group>"; };
+		5E99782D1B93CBBD00392FFA /* LTAggregatedUserDayLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTAggregatedUserDayLog.h; sourceTree = "<group>"; };
+		5E99782E1B93CBBD00392FFA /* LTAggregatedUserDayLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTAggregatedUserDayLog.m; sourceTree = "<group>"; };
 		5EE114A81B9392C000FB8CE1 /* LTHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHelper.h; sourceTree = "<group>"; };
 		5EE114A91B9392C000FB8CE1 /* LTHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTHelper.m; sourceTree = "<group>"; };
 		5EE114AB1B93962400FB8CE1 /* UIView+Lettuce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Lettuce.h"; sourceTree = "<group>"; };
@@ -179,6 +193,13 @@
 		5E530F631B937D9F009A0843 /* This Week */ = {
 			isa = PBXGroup;
 			children = (
+				5E9978221B93BA4D00392FFA /* LTThisWeekViewController.h */,
+				5E9978231B93BA4D00392FFA /* LTThisWeekViewController.m */,
+				5E9978251B93C2B200392FFA /* LTProgressView.h */,
+				5E9978261B93C2B200392FFA /* LTProgressView.m */,
+				5E9978281B93C2BC00392FFA /* LTProgressView.xib */,
+				5E99782D1B93CBBD00392FFA /* LTAggregatedUserDayLog.h */,
+				5E99782E1B93CBBD00392FFA /* LTAggregatedUserDayLog.m */,
 			);
 			name = "This Week";
 			sourceTree = "<group>";
@@ -192,6 +213,8 @@
 				5E530F6B1B937E4F009A0843 /* UIStoryboard+Lettuce.m */,
 				5EE114AB1B93962400FB8CE1 /* UIView+Lettuce.h */,
 				5EE114AC1B93962400FB8CE1 /* UIView+Lettuce.m */,
+				5E99782A1B93C5E300392FFA /* NSDate+Lettuce.h */,
+				5E99782B1B93C5E300392FFA /* NSDate+Lettuce.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -321,6 +344,7 @@
 				5E530F251B92DF24009A0843 /* Main.storyboard in Resources */,
 				5E530F2A1B92DF24009A0843 /* LaunchScreen.xib in Resources */,
 				5E530F271B92DF24009A0843 /* Images.xcassets in Resources */,
+				5E9978291B93C2BC00392FFA /* LTProgressView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,11 +400,15 @@
 				5E530F221B92DF24009A0843 /* LTTodayViewController.m in Sources */,
 				5EE114AA1B9392C000FB8CE1 /* LTHelper.m in Sources */,
 				5E530F5F1B9377E3009A0843 /* LTSignUpViewController.m in Sources */,
+				5E9978241B93BA4D00392FFA /* LTThisWeekViewController.m in Sources */,
 				5E530F1F1B92DF24009A0843 /* LTAppDelegate.m in Sources */,
 				5E530F411B92E725009A0843 /* UIColor+Lettuce.m in Sources */,
 				5E530F701B938568009A0843 /* LTConstants.m in Sources */,
+				5E99782F1B93CBBD00392FFA /* LTAggregatedUserDayLog.m in Sources */,
+				5E99782C1B93C5E300392FFA /* NSDate+Lettuce.m in Sources */,
 				5E530F6C1B937E4F009A0843 /* UIStoryboard+Lettuce.m in Sources */,
 				5E530F1C1B92DF24009A0843 /* main.m in Sources */,
+				5E9978271B93C2B200392FFA /* LTProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

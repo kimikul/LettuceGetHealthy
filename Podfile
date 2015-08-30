@@ -2,7 +2,7 @@
 # platform :ios, '6.0'
 
 target 'LettuceGetHealthy' do
-  pod 'JBChartView'
+  pod 'M13ProgressSuite'
   pod 'Parse'
 end
 

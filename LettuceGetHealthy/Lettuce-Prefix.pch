@@ -16,5 +16,6 @@
 #import "LTConstants.h"
 #import <Parse/Parse.h>
 #import "UIView+Lettuce.h"
+#import "NSDate+Lettuce.h"
 
 #endif

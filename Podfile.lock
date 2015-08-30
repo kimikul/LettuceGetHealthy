@@ -1,16 +1,16 @@
 PODS:
   - Bolts/Tasks (1.2.1)
-  - JBChartView (2.8.15)
+  - M13ProgressSuite (1.2.7)
   - Parse (1.8.2):
     - Bolts/Tasks (>= 1.2.1)
 
 DEPENDENCIES:
-  - JBChartView
+  - M13ProgressSuite
   - Parse
 
 SPEC CHECKSUMS:
   Bolts: 7686a5cb204d1ac54cee26f12d9b7622db3f80d1
-  JBChartView: d77d6a713a32547b24ccfaeba90958e7274f0c9d
+  M13ProgressSuite: 03d194af6359da440641ba758aed5a18b0386a86
   Parse: 188601c6cd91fae55906badd283b513104a3a8c9
 
 COCOAPODS: 0.37.2
