@@ -1,0 +1,24 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "scale" : "1x",
+      "filename" : "icon-chart.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "icon-chart@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "icon-chart@3x.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode",
+    "template-rendering-intent" : "template"
+  }
+}

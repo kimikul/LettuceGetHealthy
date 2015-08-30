@@ -27,6 +27,7 @@
 		5E530F551B92FA45009A0843 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E530F541B92FA45009A0843 /* libsqlite3.dylib */; };
 		5E530F571B92FA7F009A0843 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E530F561B92FA7F009A0843 /* Parse.framework */; };
 		5E530F591B92FAE1009A0843 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E530F581B92FAE1009A0843 /* Bolts.framework */; };
+		5E530F5C1B9376FE009A0843 /* LTTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F5B1B9376FE009A0843 /* LTTabBarControllerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		5E530F541B92FA45009A0843 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5E530F561B92FA7F009A0843 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../Downloads/parse-library-1.8.2/Parse.framework"; sourceTree = "<group>"; };
 		5E530F581B92FAE1009A0843 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../Downloads/parse-library-1.8.2/Bolts.framework"; sourceTree = "<group>"; };
+		5E530F5A1B9376FE009A0843 /* LTTabBarControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTabBarControllerViewController.h; sourceTree = "<group>"; };
+		5E530F5B1B9376FE009A0843 /* LTTabBarControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTabBarControllerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,8 @@
 				5E530F191B92DF24009A0843 /* Supporting Files */,
 				5E530F3F1B92E725009A0843 /* UIColor+Lettuce.h */,
 				5E530F401B92E725009A0843 /* UIColor+Lettuce.m */,
+				5E530F5A1B9376FE009A0843 /* LTTabBarControllerViewController.h */,
+				5E530F5B1B9376FE009A0843 /* LTTabBarControllerViewController.m */,
 			);
 			path = LettuceGetHealthy;
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E530F5C1B9376FE009A0843 /* LTTabBarControllerViewController.m in Sources */,
 				5E530F221B92DF24009A0843 /* LTTodayViewController.m in Sources */,
 				5E530F1F1B92DF24009A0843 /* AppDelegate.m in Sources */,
 				5E530F411B92E725009A0843 /* UIColor+Lettuce.m in Sources */,

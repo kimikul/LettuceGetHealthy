@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import "UIColor+Lettuce.h"
 
 @interface AppDelegate ()
 
@@ -18,12 +19,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initializeParse];
+    [self setupAppearance];
     return YES;
 }
 
 - (void)initializeParse {
     [Parse setApplicationId:@"8B3NCaLurRYAEU9uNOEfVDdQNjCfKePknp5fQpbo"
                   clientKey:@"Pr5Htaq0xDhpug69BV5orNpA9Fpky2w6NFpN1zJu"];
+}
+
+- (void)setupAppearance {
+    [[UITabBar appearance] setTintColor:[UIColor lettuceGreen]];
+    [[UITabBar appearance] setBarTintColor:[UIColor darkGrayColor]];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

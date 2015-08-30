@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Fly-q7-dpJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="q5D-ZN-nBj">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="18E-WJ-BpI">
+            <objects>
+                <viewController id="UF7-qq-snV" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2aQ-i7-f3I"/>
+                        <viewControllerLayoutGuide type="bottom" id="XCb-s0-M7p"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4mw-KF-2lX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eWr-xf-8Dm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0K8-Jr-xJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2506" y="1164"/>
+        </scene>
         <!--saturday, august 28-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -216,12 +235,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="905"/>
+            <point key="canvasLocation" x="2836" y="905"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Today-->
         <scene sceneID="BxA-Yr-jDi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fly-q7-dpJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Today" image="icon-today" selectedImage="icon-today" id="0NZ-iH-KE2">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SNq-A1-Bd2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -234,7 +256,54 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nr3-27-tkb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1754" y="359"/>
+        </scene>
+        <!--Tab Bar Controller View Controller-->
+        <scene sceneID="Gjs-ER-Py2">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="q5D-ZN-nBj" customClass="LTTabBarControllerViewController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="buf-ln-3ei">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.2331353665" green="0.89914021160000002" blue="0.40641616580000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="0.80000000000000004" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.2331353665" green="0.89914021160000002" blue="0.40641616580000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Fly-q7-dpJ" kind="relationship" relationship="viewControllers" id="oos-hM-RRh"/>
+                        <segue destination="lMP-Uo-5oX" kind="relationship" relationship="viewControllers" id="KrG-Nc-kwV"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h72-CL-n2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="942" y="359"/>
         </scene>
+        <!--This Week-->
+        <scene sceneID="t5P-55-JhU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lMP-Uo-5oX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="This Week" image="icon-chart" selectedImage="icon-chart" id="FNJ-L6-dTF">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-3"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vqI-OE-gua">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UF7-qq-snV" kind="relationship" relationship="rootViewController" id="byw-Tn-CEZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qkr-T8-4i3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1694" y="1164"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="icon-chart" width="30" height="30"/>
+        <image name="icon-today" width="25" height="25"/>
+    </resources>
 </document>
