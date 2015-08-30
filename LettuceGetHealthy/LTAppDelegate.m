@@ -6,20 +6,22 @@
 //  Copyright (c) 2015 hsiao. All rights reserved.
 //
 
-#import "AppDelegate.h"
-#import <Parse/Parse.h>
-#import "UIColor+Lettuce.h"
+#import "LTAppDelegate.h"
+#import "LTTabBarController.h"
+#import "LTSignUpViewController.h"
 
-@interface AppDelegate ()
+@interface LTAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation LTAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initializeParse];
     [self setupAppearance];
+    [self transitionToCorrectViewController];
+    
     return YES;
 }
 
@@ -31,6 +33,29 @@
 - (void)setupAppearance {
     [[UITabBar appearance] setTintColor:[UIColor lettuceGreen]];
     [[UITabBar appearance] setBarTintColor:[UIColor darkGrayColor]];
+}
+
+- (void)transitionToCorrectViewController {
+    UIViewController *vc;
+    UIStoryboard *mainStoryboard = [UIStoryboard mainStoryboard];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *currentUser = [defaults objectForKey:LTCurrentUserDefaultsKey];
+    if (currentUser) {
+        vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"LTTabBarController"];
+    } else {
+        vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"LTSignUpViewController"];
+    }
+    
+    [self setRootViewController:vc];
+}
+
+- (void)setRootViewController:(UIViewController*)vc {
+    [UIView transitionWithView:self.window.rootViewController.view duration:0.3
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        self.window.rootViewController = vc;
+                    } completion:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

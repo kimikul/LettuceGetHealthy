@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E530F1C1B92DF24009A0843 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F1B1B92DF24009A0843 /* main.m */; };
-		5E530F1F1B92DF24009A0843 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F1E1B92DF24009A0843 /* AppDelegate.m */; };
+		5E530F1F1B92DF24009A0843 /* LTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F1E1B92DF24009A0843 /* LTAppDelegate.m */; };
 		5E530F221B92DF24009A0843 /* LTTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F211B92DF24009A0843 /* LTTodayViewController.m */; };
 		5E530F251B92DF24009A0843 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E530F231B92DF24009A0843 /* Main.storyboard */; };
 		5E530F271B92DF24009A0843 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E530F261B92DF24009A0843 /* Images.xcassets */; };
@@ -27,7 +27,10 @@
 		5E530F551B92FA45009A0843 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E530F541B92FA45009A0843 /* libsqlite3.dylib */; };
 		5E530F571B92FA7F009A0843 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E530F561B92FA7F009A0843 /* Parse.framework */; };
 		5E530F591B92FAE1009A0843 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E530F581B92FAE1009A0843 /* Bolts.framework */; };
-		5E530F5C1B9376FE009A0843 /* LTTabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F5B1B9376FE009A0843 /* LTTabBarControllerViewController.m */; };
+		5E530F5C1B9376FE009A0843 /* LTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F5B1B9376FE009A0843 /* LTTabBarController.m */; };
+		5E530F5F1B9377E3009A0843 /* LTSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F5E1B9377E3009A0843 /* LTSignUpViewController.m */; };
+		5E530F6C1B937E4F009A0843 /* UIStoryboard+Lettuce.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F6B1B937E4F009A0843 /* UIStoryboard+Lettuce.m */; };
+		5E530F701B938568009A0843 /* LTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E530F6F1B938568009A0843 /* LTConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +47,8 @@
 		5E530F161B92DF24009A0843 /* LettuceGetHealthy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LettuceGetHealthy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E530F1A1B92DF24009A0843 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E530F1B1B92DF24009A0843 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5E530F1D1B92DF24009A0843 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		5E530F1E1B92DF24009A0843 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5E530F1D1B92DF24009A0843 /* LTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTAppDelegate.h; sourceTree = "<group>"; };
+		5E530F1E1B92DF24009A0843 /* LTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTAppDelegate.m; sourceTree = "<group>"; };
 		5E530F201B92DF24009A0843 /* LTTodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTTodayViewController.h; sourceTree = "<group>"; };
 		5E530F211B92DF24009A0843 /* LTTodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTTodayViewController.m; sourceTree = "<group>"; };
 		5E530F241B92DF24009A0843 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,8 +71,15 @@
 		5E530F541B92FA45009A0843 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		5E530F561B92FA7F009A0843 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../Downloads/parse-library-1.8.2/Parse.framework"; sourceTree = "<group>"; };
 		5E530F581B92FAE1009A0843 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../Downloads/parse-library-1.8.2/Bolts.framework"; sourceTree = "<group>"; };
-		5E530F5A1B9376FE009A0843 /* LTTabBarControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTabBarControllerViewController.h; sourceTree = "<group>"; };
-		5E530F5B1B9376FE009A0843 /* LTTabBarControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTabBarControllerViewController.m; sourceTree = "<group>"; };
+		5E530F5A1B9376FE009A0843 /* LTTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTabBarController.h; sourceTree = "<group>"; };
+		5E530F5B1B9376FE009A0843 /* LTTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTabBarController.m; sourceTree = "<group>"; };
+		5E530F5D1B9377E3009A0843 /* LTSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTSignUpViewController.h; sourceTree = "<group>"; };
+		5E530F5E1B9377E3009A0843 /* LTSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTSignUpViewController.m; sourceTree = "<group>"; };
+		5E530F6A1B937E4F009A0843 /* UIStoryboard+Lettuce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStoryboard+Lettuce.h"; sourceTree = "<group>"; };
+		5E530F6B1B937E4F009A0843 /* UIStoryboard+Lettuce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboard+Lettuce.m"; sourceTree = "<group>"; };
+		5E530F6E1B938568009A0843 /* LTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTConstants.h; sourceTree = "<group>"; };
+		5E530F6F1B938568009A0843 /* LTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTConstants.m; sourceTree = "<group>"; };
+		5E530F721B938736009A0843 /* Lettuce-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lettuce-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,19 +115,8 @@
 		5E530F0D1B92DF24009A0843 = {
 			isa = PBXGroup;
 			children = (
-				5E530F581B92FAE1009A0843 /* Bolts.framework */,
-				5E530F561B92FA7F009A0843 /* Parse.framework */,
-				5E530F541B92FA45009A0843 /* libsqlite3.dylib */,
-				5E530F521B92FA3F009A0843 /* libz.dylib */,
-				5E530F501B92FA39009A0843 /* SystemConfiguration.framework */,
-				5E530F4E1B92FA33009A0843 /* StoreKit.framework */,
-				5E530F4C1B92FA2E009A0843 /* Security.framework */,
-				5E530F4A1B92FA29009A0843 /* QuartzCore.framework */,
-				5E530F481B92FA22009A0843 /* CoreLocation.framework */,
-				5E530F461B92FA1C009A0843 /* CoreGraphics.framework */,
-				5E530F441B92FA17009A0843 /* CFNetwork.framework */,
-				5E530F421B92FA12009A0843 /* AudioToolbox.framework */,
 				5E530F181B92DF24009A0843 /* LettuceGetHealthy */,
+				5E530F601B937D72009A0843 /* Frameworks */,
 				5E530F321B92DF24009A0843 /* LettuceGetHealthyTests */,
 				5E530F171B92DF24009A0843 /* Products */,
 			);
@@ -135,18 +134,15 @@
 		5E530F181B92DF24009A0843 /* LettuceGetHealthy */ = {
 			isa = PBXGroup;
 			children = (
-				5E530F1D1B92DF24009A0843 /* AppDelegate.h */,
-				5E530F1E1B92DF24009A0843 /* AppDelegate.m */,
-				5E530F201B92DF24009A0843 /* LTTodayViewController.h */,
-				5E530F211B92DF24009A0843 /* LTTodayViewController.m */,
-				5E530F231B92DF24009A0843 /* Main.storyboard */,
+				5E530F661B937DEE009A0843 /* AppDelegate */,
+				5E530F651B937DCF009A0843 /* Storyboard */,
+				5E530F611B937D8C009A0843 /* SignUp */,
+				5E530F621B937D9B009A0843 /* Today */,
+				5E530F631B937D9F009A0843 /* This Week */,
+				5E530F6D1B938551009A0843 /* Common */,
+				5E530F641B937DB2009A0843 /* Categories */,
 				5E530F261B92DF24009A0843 /* Images.xcassets */,
-				5E530F281B92DF24009A0843 /* LaunchScreen.xib */,
 				5E530F191B92DF24009A0843 /* Supporting Files */,
-				5E530F3F1B92E725009A0843 /* UIColor+Lettuce.h */,
-				5E530F401B92E725009A0843 /* UIColor+Lettuce.m */,
-				5E530F5A1B9376FE009A0843 /* LTTabBarControllerViewController.h */,
-				5E530F5B1B9376FE009A0843 /* LTTabBarControllerViewController.m */,
 			);
 			path = LettuceGetHealthy;
 			sourceTree = "<group>";
@@ -175,6 +171,91 @@
 				5E530F341B92DF24009A0843 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5E530F601B937D72009A0843 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E530F581B92FAE1009A0843 /* Bolts.framework */,
+				5E530F561B92FA7F009A0843 /* Parse.framework */,
+				5E530F541B92FA45009A0843 /* libsqlite3.dylib */,
+				5E530F521B92FA3F009A0843 /* libz.dylib */,
+				5E530F501B92FA39009A0843 /* SystemConfiguration.framework */,
+				5E530F4E1B92FA33009A0843 /* StoreKit.framework */,
+				5E530F4C1B92FA2E009A0843 /* Security.framework */,
+				5E530F4A1B92FA29009A0843 /* QuartzCore.framework */,
+				5E530F481B92FA22009A0843 /* CoreLocation.framework */,
+				5E530F461B92FA1C009A0843 /* CoreGraphics.framework */,
+				5E530F441B92FA17009A0843 /* CFNetwork.framework */,
+				5E530F421B92FA12009A0843 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5E530F611B937D8C009A0843 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				5E530F5D1B9377E3009A0843 /* LTSignUpViewController.h */,
+				5E530F5E1B9377E3009A0843 /* LTSignUpViewController.m */,
+			);
+			name = SignUp;
+			sourceTree = "<group>";
+		};
+		5E530F621B937D9B009A0843 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				5E530F201B92DF24009A0843 /* LTTodayViewController.h */,
+				5E530F211B92DF24009A0843 /* LTTodayViewController.m */,
+			);
+			name = Today;
+			sourceTree = "<group>";
+		};
+		5E530F631B937D9F009A0843 /* This Week */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "This Week";
+			sourceTree = "<group>";
+		};
+		5E530F641B937DB2009A0843 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5E530F3F1B92E725009A0843 /* UIColor+Lettuce.h */,
+				5E530F401B92E725009A0843 /* UIColor+Lettuce.m */,
+				5E530F6A1B937E4F009A0843 /* UIStoryboard+Lettuce.h */,
+				5E530F6B1B937E4F009A0843 /* UIStoryboard+Lettuce.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		5E530F651B937DCF009A0843 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5E530F231B92DF24009A0843 /* Main.storyboard */,
+				5E530F281B92DF24009A0843 /* LaunchScreen.xib */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		5E530F661B937DEE009A0843 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				5E530F1D1B92DF24009A0843 /* LTAppDelegate.h */,
+				5E530F1E1B92DF24009A0843 /* LTAppDelegate.m */,
+				5E530F5A1B9376FE009A0843 /* LTTabBarController.h */,
+				5E530F5B1B9376FE009A0843 /* LTTabBarController.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		5E530F6D1B938551009A0843 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5E530F6E1B938568009A0843 /* LTConstants.h */,
+				5E530F6F1B938568009A0843 /* LTConstants.m */,
+				5E530F721B938736009A0843 /* Lettuce-Prefix.pch */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,10 +358,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E530F5C1B9376FE009A0843 /* LTTabBarControllerViewController.m in Sources */,
+				5E530F5C1B9376FE009A0843 /* LTTabBarController.m in Sources */,
 				5E530F221B92DF24009A0843 /* LTTodayViewController.m in Sources */,
-				5E530F1F1B92DF24009A0843 /* AppDelegate.m in Sources */,
+				5E530F5F1B9377E3009A0843 /* LTSignUpViewController.m in Sources */,
+				5E530F1F1B92DF24009A0843 /* LTAppDelegate.m in Sources */,
 				5E530F411B92E725009A0843 /* UIColor+Lettuce.m in Sources */,
+				5E530F701B938568009A0843 /* LTConstants.m in Sources */,
+				5E530F6C1B937E4F009A0843 /* UIStoryboard+Lettuce.m in Sources */,
 				5E530F1C1B92DF24009A0843 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +495,8 @@
 					"$(inherited)",
 					"/Users/kimberlyhsiao/Downloads/parse-library-1.8.2",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "LettuceGetHealthy/Lettuce-Prefix.pch";
 				INFOPLIST_FILE = LettuceGetHealthy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,6 +511,8 @@
 					"$(inherited)",
 					"/Users/kimberlyhsiao/Downloads/parse-library-1.8.2",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "LettuceGetHealthy/Lettuce-Prefix.pch";
 				INFOPLIST_FILE = LettuceGetHealthy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

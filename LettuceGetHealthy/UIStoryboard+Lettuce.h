@@ -1,5 +1,5 @@
 //
-//  LTTabBarControllerViewController.h
+//  UIStoryboard+Lettuce.h
 //  LettuceGetHealthy
 //
 //  Created by Kimberly Hsiao on 8/30/15.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LTTabBarControllerViewController : UITabBarController
+@interface UIStoryboard (Lettuce)
+
++ (UIStoryboard*)mainStoryboard;
 
 @end
