@@ -12,6 +12,6 @@
 
 + (NSDate*)startDateOfWeek;
 + (NSDate*)endDateOfWeek;
-- (NSDate*)dateByAddingOneDay;
++ (BOOL)date:(NSDate*)firstDate isSameDayAsDate:(NSDate*)secondDate;
 
 @end

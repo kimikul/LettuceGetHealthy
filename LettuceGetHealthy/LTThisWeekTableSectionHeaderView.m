@@ -7,6 +7,7 @@
 //
 
 #import "LTThisWeekTableSectionHeaderView.h"
+
 @interface LTThisWeekTableSectionHeaderView()
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *headerTitle;
@@ -19,16 +20,18 @@
 }
 
 + (CGFloat)headerHeight {
-    return 36;
+    return 50;
 }
 
 - (void)setupWithType:(LTProgressTableViewHeaderType)headerType {
     if (headerType == LTProgressTableViewHeaderTypeWorkout) {
         self.headerTitle.text = @"WORKOUTS";
         self.iconImageView.image = [UIImage imageNamed:@"icon-workout"];
+        self.iconImageView.tintColor = [UIColor orangeColor];
     } else {
         self.headerTitle.text = @"SALADS";
         self.iconImageView.image = [UIImage imageNamed:@"icon-salad"];
+        self.iconImageView.tintColor = [UIColor lettuceGreen];
     }
 }
 

@@ -8,13 +8,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LTProgressTableViewCell" id="53G-Kt-soE" customClass="LTProgressTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="630" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="630" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="53G-Kt-soE" id="sy4-iM-0sp">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RXC-T1-agc">
-                        <rect key="frame" x="67" y="4" width="36" height="36"/>
+                        <rect key="frame" x="67" y="7" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="Yxr-BO-9Yl"/>
                             <constraint firstAttribute="height" constant="36" id="lTG-Qo-nW4"/>
@@ -27,7 +27,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ronald" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgs-IT-O6o">
-                        <rect key="frame" x="8" y="11" width="52" height="21"/>
+                        <rect key="frame" x="8" y="14" width="52" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="1fJ-Kh-PfD"/>
                             <constraint firstAttribute="width" constant="52" id="F8C-XE-cgV"/>
@@ -37,14 +37,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fic-7O-xcA" customClass="M13ProgressViewBar">
-                        <rect key="frame" x="111" y="19" width="505" height="20"/>
+                        <rect key="frame" x="111" y="22" width="505" height="20"/>
                         <color key="backgroundColor" red="1" green="0.64076138039999997" blue="0.080833225379999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="stu-UX-Owh"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 of 4 completed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0i-HT-Cl3">
-                        <rect key="frame" x="111" y="4" width="505" height="15"/>
+                        <rect key="frame" x="111" y="7" width="505" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="ZNE-Hh-7OH"/>
                         </constraints>
@@ -57,7 +57,7 @@
                     <constraint firstItem="Xgs-IT-O6o" firstAttribute="leading" secondItem="sy4-iM-0sp" secondAttribute="leadingMargin" id="AuI-5n-OkE"/>
                     <constraint firstAttribute="centerY" secondItem="Xgs-IT-O6o" secondAttribute="centerY" constant="0.25" id="Ddu-zw-raK"/>
                     <constraint firstItem="Fic-7O-xcA" firstAttribute="trailing" secondItem="sy4-iM-0sp" secondAttribute="trailingMargin" constant="-6" id="E5z-nE-unO"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Fic-7O-xcA" secondAttribute="bottom" constant="-3.5" id="F9H-rz-6YF"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Fic-7O-xcA" secondAttribute="bottom" constant="-0.5" id="F9H-rz-6YF"/>
                     <constraint firstItem="Fic-7O-xcA" firstAttribute="leading" secondItem="RXC-T1-agc" secondAttribute="trailing" constant="8" id="IEK-s3-HmC"/>
                     <constraint firstItem="Fic-7O-xcA" firstAttribute="leading" secondItem="P0i-HT-Cl3" secondAttribute="leading" id="Zxj-bh-P1T"/>
                     <constraint firstItem="Fic-7O-xcA" firstAttribute="trailing" secondItem="P0i-HT-Cl3" secondAttribute="trailing" id="k3f-0f-AKb"/>
@@ -72,7 +72,7 @@
                 <outlet property="progressBar" destination="Fic-7O-xcA" id="lTr-E9-GNz"/>
                 <outlet property="progressLabel" destination="P0i-HT-Cl3" id="duC-ac-GXE"/>
             </connections>
-            <point key="canvasLocation" x="285" y="371"/>
+            <point key="canvasLocation" x="105" y="354"/>
         </tableViewCell>
     </objects>
 </document>

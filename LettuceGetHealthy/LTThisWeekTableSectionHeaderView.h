@@ -13,7 +13,7 @@ typedef enum {
     LTProgressTableViewHeaderTypeSalad,
 } LTProgressTableViewHeaderType;
 
-@interface LTThisWeekTableSectionHeaderView : UIView
+@interface LTThisWeekTableSectionHeaderView : UITableViewHeaderFooterView
 
 + (NSString*)reuseIdentifier;
 + (CGFloat)headerHeight;

@@ -36,7 +36,7 @@ typedef enum {
 
 - (void)setupTable {
     [self.tableView registerNib:[UINib nibWithNibName:[LTProgressTableViewCell reuseIdentifier] bundle:[NSBundle mainBundle]] forCellReuseIdentifier:[LTProgressTableViewCell reuseIdentifier]];
-    [self.tableView registerNib:[UINib nibWithNibName:[LTThisWeekTableSectionHeaderView reuseIdentifier] bundle:[NSBundle mainBundle]] forCellReuseIdentifier:[LTThisWeekTableSectionHeaderView reuseIdentifier]];
+    [self.tableView registerNib:[UINib nibWithNibName:[LTThisWeekTableSectionHeaderView reuseIdentifier] bundle:[NSBundle mainBundle]] forHeaderFooterViewReuseIdentifier:[LTThisWeekTableSectionHeaderView reuseIdentifier]];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
