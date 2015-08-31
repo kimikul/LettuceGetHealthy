@@ -46,8 +46,9 @@
 
 - (void)setupProgressLabel {
     NSString *noun = self.cellType == LTProgressTableViewCellTypeWorkout ? @"workouts" : @"salads";
+    NSInteger count = self.cellType == LTProgressTableViewCellTypeWorkout ? self.userWeekLog.totalWorkoutsThisWeek : self.userWeekLog.totalSaladsThisWeek;
     
-    self.progressLabel.text = [NSString stringWithFormat:@"%@ of 4 %@", @(self.userWeekLog.totalWorkoutsThisWeek), noun];
+    self.progressLabel.text = [NSString stringWithFormat:@"%@ of 4 %@", @(count), noun];
 
 }
 
@@ -61,7 +62,9 @@
     self.progressBar.progressBarThickness = 20;
     self.progressBar.successColor = [UIColor orangeColor];
     self.progressBar.showPercentage = NO;
-    [self.progressBar setProgress:self.userWeekLog.totalWorkoutsThisWeek/4.0 animated:YES];
+    
+    NSInteger count = self.cellType == LTProgressTableViewCellTypeWorkout ? self.userWeekLog.totalWorkoutsThisWeek : self.userWeekLog.totalSaladsThisWeek;
+    [self.progressBar setProgress:count/4.0 animated:YES];
 }
 
 - (void)loadProfPic {

@@ -10,6 +10,7 @@
 #import "LTUserWeekLog.h"
 #import "LTProgressTableViewCell.h"
 #import "M13ProgressViewBar.h"
+#import "LTThisWeekTableSectionHeaderView.h"
 
 typedef enum {
     LTThisWeekTableViewSectionTypeWorkout,
@@ -35,6 +36,7 @@ typedef enum {
 
 - (void)setupTable {
     [self.tableView registerNib:[UINib nibWithNibName:[LTProgressTableViewCell reuseIdentifier] bundle:[NSBundle mainBundle]] forCellReuseIdentifier:[LTProgressTableViewCell reuseIdentifier]];
+    [self.tableView registerNib:[UINib nibWithNibName:[LTThisWeekTableSectionHeaderView reuseIdentifier] bundle:[NSBundle mainBundle]] forCellReuseIdentifier:[LTThisWeekTableSectionHeaderView reuseIdentifier]];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
@@ -103,36 +105,21 @@ typedef enum {
     return [LTProgressTableViewCell cellHeight];
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return 50;
-//}
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    if (_dateArray.count == 0) {
-//        return [[UIView alloc] initWithFrame:CGRectZero];
-//    } else if (self.canPaginate && (section == _dateArray.count)) {
-//        return [[UIView alloc] initWithFrame:CGRectZero];
-//    }
-//    
-//    NSString *date = [_dateArray objectAtIndex:section];
-//    
-//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,34)];
-//    headerView.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
-//    headerView.layer.borderColor = [UIColor whiteColor].CGColor;
-//    headerView.layer.borderWidth = 3.0;
-//    
-//    UILabel *dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,0,300,34)];
-//    dateLabel.text = date;
-//    dateLabel.font = [UIFont fontWithName:@"Thonburi" size:17.0];
-//    
-//    dateLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
-//    [headerView addSubview:dateLabel];
-//    
-//    return headerView;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return [LTThisWeekTableSectionHeaderView headerHeight];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    LTProgressTableViewHeaderType headerType = section == LTThisWeekTableViewSectionTypeWorkout ? LTProgressTableViewHeaderTypeWorkout : LTProgressTableViewHeaderTypeSalad;
+
+    LTThisWeekTableSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:[LTThisWeekTableSectionHeaderView reuseIdentifier]];
+    [headerView setupWithType:headerType];
+    
+    return headerView;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    LTProgressTableViewCellType cellType = indexPath.row == LTThisWeekTableViewSectionTypeWorkout ? LTProgressTableViewCellTypeWorkout : LTProgressTableViewCellTypeSalad;
+    LTProgressTableViewCellType cellType = indexPath.section == LTThisWeekTableViewSectionTypeWorkout ? LTProgressTableViewCellTypeWorkout : LTProgressTableViewCellTypeSalad;
     LTUserWeekLog *userWeekLog = [self.userWeekLogs objectAtIndex:indexPath.row];
     
     LTProgressTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[LTProgressTableViewCell reuseIdentifier]];

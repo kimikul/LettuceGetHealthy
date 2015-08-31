@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="82T-EK-rty" customClass="LTThisWeekTableSectionHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPz-MM-xUK">
+                    <rect key="frame" x="10" y="2" width="30" height="30"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-workout" translatesAutoresizingMaskIntoConstraints="NO" id="dnf-W0-GfQ">
+                            <rect key="frame" x="5" y="6" width="25" height="25"/>
+                            <color key="tintColor" red="1" green="0.64076138039999997" blue="0.080833225379999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="10s-9h-40e"/>
+                                <constraint firstAttribute="width" constant="25" id="DFq-dZ-KyL"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="dnf-W0-GfQ" secondAttribute="centerX" constant="-2.5" id="8tQ-db-dL5"/>
+                        <constraint firstAttribute="centerY" secondItem="dnf-W0-GfQ" secondAttribute="centerY" constant="-3.5" id="Dx5-NG-jCX"/>
+                        <constraint firstAttribute="width" constant="30" id="Sgo-aD-IFm"/>
+                        <constraint firstAttribute="centerY" secondItem="dnf-W0-GfQ" secondAttribute="centerY" constant="-3.5" id="gcM-h4-tJM"/>
+                        <constraint firstAttribute="height" constant="30" id="jW7-CN-wyh"/>
+                        <constraint firstAttribute="centerX" secondItem="dnf-W0-GfQ" secondAttribute="centerX" constant="-2.5" id="pkh-XV-h0X"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="gcM-h4-tJM"/>
+                            <exclude reference="pkh-XV-h0X"/>
+                        </mask>
+                    </variation>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WORKOUTS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OvC-yf-1KU">
+                    <rect key="frame" x="56" y="8" width="536" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="jn2-qJ-FrD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="OvC-yf-1KU" firstAttribute="centerY" secondItem="sPz-MM-xUK" secondAttribute="centerY" constant="1.5" id="STY-pP-GHY"/>
+                <constraint firstAttribute="trailing" secondItem="OvC-yf-1KU" secondAttribute="trailing" constant="8" id="i33-pg-3aC"/>
+                <constraint firstAttribute="centerY" secondItem="sPz-MM-xUK" secondAttribute="centerY" constant="1" id="vwc-Nx-QVZ"/>
+                <constraint firstItem="sPz-MM-xUK" firstAttribute="leading" secondItem="82T-EK-rty" secondAttribute="leading" constant="10" id="yeL-tw-WkZ"/>
+                <constraint firstItem="OvC-yf-1KU" firstAttribute="leading" secondItem="sPz-MM-xUK" secondAttribute="trailing" constant="16" id="zOk-V1-5GM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="headerTitle" destination="OvC-yf-1KU" id="BeG-Ov-6NX"/>
+                <outlet property="iconImageView" destination="dnf-W0-GfQ" id="LA4-O3-gxh"/>
+            </connections>
+            <point key="canvasLocation" x="367" y="207"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon-workout" width="512" height="512"/>
+    </resources>
+</document>

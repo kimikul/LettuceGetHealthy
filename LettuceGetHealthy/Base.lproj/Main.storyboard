@@ -256,7 +256,7 @@
                                     <action selector="doneTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="16c-bG-Uzw"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy4-xQ-yNq" userLabel="All Done View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hy4-xQ-yNq" userLabel="All Done View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VoC-W9-ZBp" userLabel="Header View">
