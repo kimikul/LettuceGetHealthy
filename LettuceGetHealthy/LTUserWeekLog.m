@@ -1,13 +1,13 @@
 //
-//  LTAggregatedUserDayLog.m
+//  LTUserWeekLog.m
 //  LettuceGetHealthy
 //
 //  Created by Kimberly Hsiao on 8/30/15.
 //  Copyright (c) 2015 hsiao. All rights reserved.
 //
 
-#import "LTAggregatedUserDayLog.h"
+#import "LTUserWeekLog.h"
 
-@implementation LTAggregatedUserDayLog
+@implementation LTUserWeekLog
 
 @end

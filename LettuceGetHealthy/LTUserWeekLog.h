@@ -1,5 +1,5 @@
 //
-//  LTAggregatedUserDayLog.h
+//  LTUserWeekLog.h
 //  LettuceGetHealthy
 //
 //  Created by Kimberly Hsiao on 8/30/15.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LTAggregatedUserDayLog : NSObject
+@interface LTUserWeekLog : NSObject
 
 @property (nonatomic, strong) PFObject *user;
 @property (nonatomic, assign) NSInteger totalSaladsThisWeek;

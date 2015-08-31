@@ -23,4 +23,10 @@
     return user;
 }
 
++ (BOOL)userIsMe:(PFObject*)user {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dict = [defaults objectForKey:LTCurrentUserDefaultsKey];
+    return [dict[@"userID"] isEqualToString:user.objectId];
+}
+
 @end

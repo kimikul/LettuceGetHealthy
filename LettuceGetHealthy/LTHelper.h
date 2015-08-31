@@ -11,5 +11,6 @@
 @interface LTHelper : NSObject
 
 + (PFObject*)currentUser;
++ (BOOL)userIsMe:(PFObject*)user;
 
 @end
