@@ -13,3 +13,7 @@
 NSString *const LTCurrentUserDefaultsKey = @"LTCurrentUserDefaultsKey"; // user is stored as dict with keys: userID, firstName, lastName, photoURL
 NSString *const LTHasSubmittedTodayDefaultsKey = @"LTHasSubmittedTodayDefaultsKey";
 NSString *const LTLastSubmittedDateKey = @"LTLastSubmittedDateKey";
+
+#pragma mark - notification keys
+
+NSString *const LTDidSubmitLogNotification = @"LTDidSubmitLogNotification";

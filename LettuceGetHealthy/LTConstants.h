@@ -11,3 +11,4 @@
 extern NSString *const LTCurrentUserDefaultsKey;
 extern NSString *const LTHasSubmittedTodayDefaultsKey;
 extern NSString *const LTLastSubmittedDateKey;
+extern NSString *const LTDidSubmitLogNotification;

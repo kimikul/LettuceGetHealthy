@@ -68,18 +68,23 @@
 }
 
 - (void)loadProfPic {
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-    
-    dispatch_async(queue, ^{
-        NSString *photoURL = self.userWeekLog.user[@"photoURL"];
-        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURL]]];
+    NSString *photoURL = self.userWeekLog.user[@"photoURL"];
+    UIImage *profPic = [[LTFileSystemImageCache shared] objectForKey:photoURL];
+    if (profPic) {
+        self.profilePicImageView.image = profPic;
+    } else if (photoURL) {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
         
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            self.profilePicImageView.image = image;
-            [self.profilePicImageView fadeInWithDuration:0.2 completion:nil];
-            [[LTFileSystemImageCache shared] setObject:image forKey:photoURL];
+        dispatch_async(queue, ^{
+            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURL]]];
+            
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                self.profilePicImageView.image = image;
+                [self.profilePicImageView fadeInWithDuration:0.2 completion:nil];
+                [[LTFileSystemImageCache shared] setObject:image forKey:photoURL];
+            });
         });
-    });
+    }
 }
 
 @end

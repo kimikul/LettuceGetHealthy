@@ -234,6 +234,7 @@ static NSString *LTSaladCountDefaultsKey = @"LTSaladCountDefaultsKey";
             [self saveSubmittedSetting:@(1)];
             [self saveSubmittedDate:today];
             [self showAllDoneForTodayViewWorkoutCount:dayLog[@"workoutCount"] saladCount:dayLog[@"saladCount"] animation:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:LTDidSubmitLogNotification object:nil];
         } else {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error saving your entry. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alertView show];

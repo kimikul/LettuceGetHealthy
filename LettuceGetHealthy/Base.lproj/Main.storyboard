@@ -20,13 +20,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeJ-5i-VTM" userLabel="Header View">
                                 <rect key="frame" x="15" y="80" width="570" height="45"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="537" placeholderIntrinsicHeight="21" text="TODAY IS THURSDAY" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rT-52-xdc">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="537" placeholderIntrinsicHeight="21" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rT-52-xdc">
                                         <rect key="frame" x="15" y="12" width="537" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="yie-oB-73H"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="TODAY IS THURSDAY">
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                         <variation key="default">
@@ -40,7 +47,9 @@
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="7rT-52-xdc" secondAttribute="centerY" id="2Ul-UA-MgS"/>
                                     <constraint firstItem="7rT-52-xdc" firstAttribute="leading" secondItem="SeJ-5i-VTM" secondAttribute="leading" constant="15" id="2W8-rl-6EO"/>
+                                    <constraint firstAttribute="bottom" secondItem="7rT-52-xdc" secondAttribute="bottom" constant="12" id="2dT-7U-kIX"/>
                                     <constraint firstAttribute="height" constant="45" id="2gk-27-1hV"/>
+                                    <constraint firstItem="7rT-52-xdc" firstAttribute="top" secondItem="SeJ-5i-VTM" secondAttribute="top" constant="12" id="7fM-uM-5Nr"/>
                                     <constraint firstAttribute="trailing" secondItem="7rT-52-xdc" secondAttribute="trailing" constant="18" id="udf-5k-zrq"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -49,6 +58,11 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2gk-27-1hV"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Puw-Dz-cTv">
                                 <rect key="frame" x="16" y="127" width="569" height="407"/>
@@ -78,6 +92,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eWr-xf-8Dm"/>
                     <connections>
+                        <outlet property="summaryLabel" destination="7rT-52-xdc" id="3vP-G5-tzF"/>
                         <outlet property="tableView" destination="Puw-Dz-cTv" id="NgQ-X2-EbC"/>
                     </connections>
                 </viewController>
@@ -267,7 +282,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="SNb-I4-Bfh"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                                 <size key="shadowOffset" width="0.0" height="0.0"/>
@@ -296,7 +311,7 @@
                                                     <constraint firstAttribute="height" constant="21" id="Lqw-lB-Mjb"/>
                                                     <constraint firstAttribute="height" constant="21" id="RRQ-9Z-BjC"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
@@ -352,7 +367,7 @@
                                                     <constraint firstAttribute="height" constant="21" id="QxH-Pw-iSy"/>
                                                     <constraint firstAttribute="height" constant="21" id="R5m-Z7-o9l"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">

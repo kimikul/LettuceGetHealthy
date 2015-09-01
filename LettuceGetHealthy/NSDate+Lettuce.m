@@ -73,4 +73,16 @@
     return NO;
 }
 
++ (NSString*)dayOfTheWeek {
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"EEEE"];
+    return [dateFormatter stringFromDate:[NSDate date]];
+}
+
++ (NSInteger)numDaysTilDate:(NSDate*)date {
+    NSTimeInterval numberOfSecondsUntilSelectedDate = [date timeIntervalSinceNow];
+    NSInteger numberOfDays = numberOfSecondsUntilSelectedDate / (60*60*24);
+    return numberOfDays;
+}
+
 @end

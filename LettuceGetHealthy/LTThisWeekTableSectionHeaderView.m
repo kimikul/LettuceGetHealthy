@@ -20,7 +20,7 @@
 }
 
 + (CGFloat)headerHeight {
-    return 50;
+    return 70;
 }
 
 - (void)setupWithType:(LTProgressTableViewHeaderType)headerType {

@@ -19,6 +19,7 @@ typedef enum {
 } LTThisWeekTableViewSectionType;
 
 @interface LTThisWeekViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *userWeekLogs;
 @end
@@ -30,8 +31,14 @@ typedef enum {
 
     self.title = @"This Week";
     
+    [self setupObservers];
     [self setupTable];
     [self fetchData];
+}
+
+- (void)setupObservers {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchData) name:LTDidSubmitLogNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fetchData) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 - (void)setupTable {
@@ -40,6 +47,47 @@ typedef enum {
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
+
+- (void)setupSummaryLabel {
+    NSString *dayOfTheWeek = [NSDate dayOfTheWeek];
+    NSInteger remainingDays = [self remainingDaysInWeek];
+    NSString *daysModifier = remainingDays == 1 ? @"" : @"s";
+    NSString *daysString = [NSString stringWithFormat:@"%@ day%@", @(remainingDays), daysModifier];
+    
+    NSInteger remainingWorkouts = 3;
+    NSString *workoutModifier = (remainingWorkouts == 1) ? @"" : @"s";
+    NSString *workoutString = [NSString stringWithFormat:@"%@ workout%@", @(remainingWorkouts), workoutModifier];
+
+    NSInteger remainingSalads = 1;
+    NSString *saladModifier = (remainingSalads == 1) ? @"" : @"s";
+    NSString *saladString = [NSString stringWithFormat:@"%@ salad%@", @(remainingSalads), saladModifier];
+    
+    NSString *text = [NSString stringWithFormat:@"Today is %@\n\nYou have %@ to complete %@ and eat %@", dayOfTheWeek, daysString, workoutString, saladString];
+    
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13.0]}];
+    
+    NSRange daysRange = [text rangeOfString:daysString];
+    NSRange workoutsRange = [text rangeOfString:workoutString];
+    NSRange saladsRange = [text rangeOfString:saladString];
+    
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithWhite:0.8 alpha:1.0] range:daysRange];
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor orangeColor] range:workoutsRange];
+    [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor lettuceGreen] range:saladsRange];
+
+    self.summaryLabel.attributedText = attrString;
+}
+
+- (NSInteger)remainingDaysInWeek {
+    NSInteger remainingDays = [NSDate numDaysTilDate:[NSDate endDateOfWeek]];
+    NSNumber *hasSubmittedToday = [[NSUserDefaults standardUserDefaults] objectForKey:LTHasSubmittedTodayDefaultsKey];
+    if (![hasSubmittedToday isEqualToNumber:@(1)]) {
+        remainingDays++;
+    }
+    
+    return remainingDays;
+}
+
+#pragma mark - data 
 
 - (void)fetchData {
     NSDate *startDate = [NSDate startDateOfWeek];
@@ -53,6 +101,7 @@ typedef enum {
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             [self processAllDayLogs:objects];
+            [self setupSummaryLabel];
             [self.tableView reloadData];
             
         }
@@ -89,6 +138,12 @@ typedef enum {
     }
     
     return nil;
+}
+
+#pragma mark - notification handlers
+
+- (void)didSubmitLog:(NSNotification*)note {
+    [self fetchData];
 }
 
 #pragma mark - tableview
