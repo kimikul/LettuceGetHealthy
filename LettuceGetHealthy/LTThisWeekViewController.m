@@ -11,6 +11,7 @@
 #import "LTProgressTableViewCell.h"
 #import "M13ProgressViewBar.h"
 #import "LTThisWeekTableSectionHeaderView.h"
+#import "LTHelper.h"
 
 typedef enum {
     LTThisWeekTableViewSectionTypeWorkout,
@@ -19,9 +20,12 @@ typedef enum {
 } LTThisWeekTableViewSectionType;
 
 @interface LTThisWeekViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *userWeekLogs;
+@property (nonatomic, strong) LTUserWeekLog *currentUserWeekLog;
+
 @end
 
 @implementation LTThisWeekViewController
@@ -49,20 +53,19 @@ typedef enum {
 }
 
 - (void)setupSummaryLabel {
-    NSString *dayOfTheWeek = [NSDate dayOfTheWeek];
     NSInteger remainingDays = [self remainingDaysInWeek];
     NSString *daysModifier = remainingDays == 1 ? @"" : @"s";
-    NSString *daysString = [NSString stringWithFormat:@"%@ day%@", @(remainingDays), daysModifier];
+    NSString *daysString = [NSString stringWithFormat:@"%@ more day%@", @(remainingDays), daysModifier];
     
-    NSInteger remainingWorkouts = 3;
+    NSInteger remainingWorkouts = 4 - self.currentUserWeekLog.totalWorkoutsThisWeek;
     NSString *workoutModifier = (remainingWorkouts == 1) ? @"" : @"s";
     NSString *workoutString = [NSString stringWithFormat:@"%@ workout%@", @(remainingWorkouts), workoutModifier];
 
-    NSInteger remainingSalads = 1;
+    NSInteger remainingSalads = [self.currentUserWeekLog.user[@"saladsOwedThisWeek"] integerValue] - self.currentUserWeekLog.totalSaladsThisWeek;
     NSString *saladModifier = (remainingSalads == 1) ? @"" : @"s";
     NSString *saladString = [NSString stringWithFormat:@"%@ salad%@", @(remainingSalads), saladModifier];
     
-    NSString *text = [NSString stringWithFormat:@"Today is %@\n\nYou have %@ to complete %@ and eat %@", dayOfTheWeek, daysString, workoutString, saladString];
+    NSString *text = [NSString stringWithFormat:@"You have %@ to complete %@ and eat %@", daysString, workoutString, saladString];
     
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:text attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:13.0]}];
     
@@ -103,7 +106,6 @@ typedef enum {
             [self processAllDayLogs:objects];
             [self setupSummaryLabel];
             [self.tableView reloadData];
-            
         }
     }];
 }
@@ -112,11 +114,13 @@ typedef enum {
     NSMutableArray *aggregatedUserDayLogs = [NSMutableArray new];
     
     for (PFObject *dayLog in objects) {
-        LTUserWeekLog *userDayLog = [self aggregatedUserDayLogForUser:dayLog[@"user"] inArray:aggregatedUserDayLogs];
+        PFObject* user = dayLog[@"user"];
         
+        LTUserWeekLog *userDayLog = [self aggregatedUserDayLogForUser:user inArray:aggregatedUserDayLogs];
+             
         if (!userDayLog) {
             LTUserWeekLog *aggregatedUserDayLog = [LTUserWeekLog new];
-            aggregatedUserDayLog.user = dayLog[@"user"];
+            aggregatedUserDayLog.user = user;
             aggregatedUserDayLog.totalSaladsThisWeek += ([dayLog[@"saladCount"] integerValue]);
             aggregatedUserDayLog.totalWorkoutsThisWeek += ([dayLog[@"workoutCount"] integerValue]);
             
@@ -124,6 +128,10 @@ typedef enum {
         } else {
             userDayLog.totalSaladsThisWeek += ([dayLog[@"saladCount"] integerValue]);
             userDayLog.totalWorkoutsThisWeek += ([dayLog[@"workoutCount"] integerValue]);
+        }
+        
+        if ([LTHelper userIsMe:user]) {
+            self.currentUserWeekLog = userDayLog;
         }
     }
     

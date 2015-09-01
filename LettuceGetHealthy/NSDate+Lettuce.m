@@ -22,7 +22,7 @@
              forDate:now];
     
     if ([NSDate date:startOfTheWeek isSameDayAsDate:now]) {
-        return [startOfTheWeek sixDaysAgo];
+        return [startOfTheWeek nDaysAgo:6];
     } else {
         return [startOfTheWeek dateByAddingOneDay];
     }
@@ -43,10 +43,22 @@
     NSDate *endOfWeek = [startOfTheWeek dateByAddingTimeInterval:interval-1];
     
     if ([NSDate date:startOfTheWeek isSameDayAsDate:now]) {
-        return [endOfWeek sixDaysAgo];
+        return [endOfWeek nDaysAgo:6];
     } else {
         return [endOfWeek dateByAddingOneDay];
     }
+}
+
++ (NSDate*)startDateOfLastWeek {
+    NSDate *startDateOfThisWeek = [NSDate startDateOfWeek];
+    NSDate *startDateOFLastWeek = [startDateOfThisWeek nDaysAgo:7];
+    return startDateOFLastWeek;
+}
+
++ (NSDate*)endDateOfLastWeek {
+    NSDate *endDateOfThisWeek = [NSDate endDateOfWeek];
+    NSDate *endDateOFLastWeek = [endDateOfThisWeek nDaysAgo:7];
+    return endDateOFLastWeek;
 }
 
 - (NSDate*)dateByAddingOneDay {
@@ -54,9 +66,9 @@
     return oneDayLater;
 }
 
-- (NSDate*)sixDaysAgo {
-    NSDate *sixDaysAgo = [self dateByAddingTimeInterval:-1*60*60*24*6];
-    return sixDaysAgo;
+- (NSDate*)nDaysAgo:(NSInteger)daysAgo {
+    NSDate *nDays = [self dateByAddingTimeInterval:-1*60*60*24*daysAgo];
+    return nDays;
 }
 
 + (BOOL)date:(NSDate*)firstDate isSameDayAsDate:(NSDate*)secondDate {

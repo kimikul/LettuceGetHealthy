@@ -12,6 +12,9 @@
 
 + (NSDate*)startDateOfWeek;
 + (NSDate*)endDateOfWeek;
++ (NSDate*)startDateOfLastWeek;
++ (NSDate*)endDateOfLastWeek;
+
 + (BOOL)date:(NSDate*)firstDate isSameDayAsDate:(NSDate*)secondDate;
 + (NSString*)dayOfTheWeek;
 + (NSInteger)numDaysTilDate:(NSDate*)date;

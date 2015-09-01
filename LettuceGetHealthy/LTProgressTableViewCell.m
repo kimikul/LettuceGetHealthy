@@ -45,11 +45,21 @@
 }
 
 - (void)setupProgressLabel {
-    NSString *noun = self.cellType == LTProgressTableViewCellTypeWorkout ? @"workouts" : @"salads";
-    NSInteger count = self.cellType == LTProgressTableViewCellTypeWorkout ? self.userWeekLog.totalWorkoutsThisWeek : self.userWeekLog.totalSaladsThisWeek;
+    NSString *noun;
+    NSInteger countSoFar;
+    NSInteger totalOwed;
     
-    self.progressLabel.text = [NSString stringWithFormat:@"%@ of 4 %@", @(count), noun];
-
+    if (self.cellType == LTProgressTableViewCellTypeWorkout) {
+        noun = @"workouts";
+        countSoFar = self.userWeekLog.totalWorkoutsThisWeek;
+        totalOwed = 4;
+    } else {
+        noun = @"salads";
+        countSoFar = self.userWeekLog.totalSaladsThisWeek;
+        totalOwed = [self.userWeekLog.user[@"saladsOwedThisWeek"] integerValue];
+    }
+    
+    self.progressLabel.text = [NSString stringWithFormat:@"%@ of %@ %@", @(countSoFar), @(totalOwed), noun];
 }
 
 - (void)setupNameLabel {
@@ -63,8 +73,18 @@
     self.progressBar.successColor = [UIColor orangeColor];
     self.progressBar.showPercentage = NO;
     
-    NSInteger count = self.cellType == LTProgressTableViewCellTypeWorkout ? self.userWeekLog.totalWorkoutsThisWeek : self.userWeekLog.totalSaladsThisWeek;
-    [self.progressBar setProgress:count/4.0 animated:YES];
+    CGFloat countSoFar;
+    CGFloat totalOwed;
+    
+    if (self.cellType == LTProgressTableViewCellTypeWorkout) {
+        countSoFar = self.userWeekLog.totalWorkoutsThisWeek;
+        totalOwed = 4;
+    } else {
+        countSoFar = self.userWeekLog.totalSaladsThisWeek;
+        totalOwed = [self.userWeekLog.user[@"saladsOwedThisWeek"] integerValue];
+    }
+
+    [self.progressBar setProgress:countSoFar/totalOwed animated:YES];
 }
 
 - (void)loadProfPic {
